@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace SalesWeb
+namespace SalesWeb.Models.ViewModels
 {
     public class Program
     {
