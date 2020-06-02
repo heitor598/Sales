@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SalesWeb.Data;
 
-namespace SalesWeb
+namespace SalesWebd
 {
     public class Startup
     {
@@ -37,10 +37,15 @@ namespace SalesWeb
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             services.AddDbContext<SalesWebContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SalesWebContext")));
+                   options.UseMySql(Configuration.GetConnectionString("SalesWebContext"), builder =>
+                   builder.MigrationsAssembly("SalesWeb")));
 
-            services.AddDbContext<SalesWebContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SalesWebContext")));
+            //services.AddDbContext<SalesWebContext>(options =>
+            //       options.UseMySql(Configuration.GetConnectionString("SalesWebContext"), builder =>
+            //       builder.MigrationsAssembly("SalesWebMvc")));
+
+            //services.AddDbContext<SalesWebContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("SalesWebContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
